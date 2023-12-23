@@ -1,41 +1,20 @@
-// Напиши функцію calcAverageCalories(days), яка повертає середньодобове значення кількості калорій,
-// які спортсмен споживав протягом тижня. Функція очікує один параметр: days — масив об’єктів.
-// Кожен об’єкт описує день тижня та кількість калорій calories, спожитих спортсменом, у цей день.
-function calcAverageCalories(days) {
-  if (days.length === 0) {
-    return 0;
-  }
-  let totalCalories = 0;
-  let totalDays = days.length;
-  for (let i = 0; i < totalDays; i++) {
-    totalCalories += days[i].calories;
-  }
-  const averageCalories = totalCalories / totalDays;
+// Створи клас Storage, який створюватиме об'єкти для управління складом товарів.
+//  Клас очікує лише один аргумент — початковий масив товарів,
+// який записується до створеного об'єкта в приватну властивість items.
 
-  return averageCalories;
-}
-console.log(
-  calcAverageCalories([
-    { day: 'monday', calories: 3010 },
-    { day: 'tuesday', calories: 3200 },
-    { day: 'wednesday', calories: 3120 },
-    { day: 'thursday', calories: 2900 },
-    { day: 'friday', calories: 3450 },
-    { day: 'saturday', calories: 3280 },
-    { day: 'sunday', calories: 3300 },
-  ]),
-); // 3180
+// Оголоси наступні методи класу:
 
-console.log(
-  calcAverageCalories([
-    { day: 'monday', calories: 2040 },
-    { day: 'tuesday', calories: 2270 },
-    { day: 'wednesday', calories: 2420 },
-    { day: 'thursday', calories: 1900 },
-    { day: 'friday', calories: 2370 },
-    { day: 'saturday', calories: 2280 },
-    { day: 'sunday', calories: 2610 },
-  ]),
-); // 2270
-
-console.log(calcAverageCalories([])); // 0
+// getItems() — повертає масив поточних товарів у приватній властивості items.
+// addItem(newItem) — приймає новий товар newItem і додає його до масиву
+//  товарів у приватну властивість items об'єкта.
+// removeItem(itemToRemove) — приймає рядок з назвою товару itemToRemove і
+// видаляє його з масиву товарів у приватній властивості items об'єкта.
+// Візьми код нижче з ініціалізацією екземпляра й викликами методів і
+// встав його після оголошення класу для перевірки коректності роботи.
+//  У консоль будуть виведені результати їх роботи. Будь ласка, нічого там не змінюй.
+const storage = new Storage(['Nanitoids', 'Prolonger', 'Antigravitator']);
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+storage.addItem('Droid');
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+storage.removeItem('Prolonger');
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
